@@ -1,0 +1,24 @@
+<div class="container">
+  <h2><%= @plate.title %></h2>
+  <p><strong>Порядок отображения:</strong> <%= @plate.order %></p>
+
+  <p><strong>Коллекция:</strong>
+    <% if @plate.collection %>
+      <%= link_to @plate.collection.title, administrator_collection_path(@plate.collection) %>
+    <% else %>
+      <span class="text-muted">Не указана</span>
+    <% end %>
+  </p>
+
+  <% if @plate.image.attached? %>
+    <div class="mb-3">
+      <%= image_tag @plate.image.variant(resize_to_limit: [400, 400]).processed, class: "img-fluid rounded" %>
+    </div>
+  <% end %>
+
+  <div class="mt-3">
+    <%= link_to "Редактировать", edit_administrator_plate_path(@plate), class: "btn btn-warning" %>
+    <%= link_to "Назад", administrator_plates_path, class: "btn btn-secondary" %>
+    <%= link_to "Удалить", administrator_plate_path(@plate), method: :delete, class: "btn btn-danger", data: { confirm: "Удалить плитку?" } %>
+  </div>
+</div>

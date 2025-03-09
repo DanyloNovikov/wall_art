@@ -1,0 +1,11 @@
+<tr>
+  <td><%= index + 1 %></td>
+  <td><%= plate.collection.title %>
+  <td><%= plate.title %></td>
+  <td><%= plate.order %></td>
+  <td>
+    <%= link_to "Просмотр", administrator_plate_path(plate), class: "btn btn-sm btn-info" %>
+    <%= link_to "Редактировать", edit_administrator_plate_path(plate), class: "btn btn-warning btn-sm" %>
+    <%= link_to "Удалить", administrator_plate_path(plate), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "Удалить плитку?" } %>
+  </td>
+</tr>

@@ -1,0 +1,21 @@
+<nav class="navbar bg-white">
+  <div class="container d-flex justify-content-between align-items-center">
+    <div class="navbar-left d-flex align-items-center">
+      <a href="<%= collections_path %>" class="back-link d-flex align-items-center">
+        <img
+          src="<%= asset_path('/images/menu.png') %>"
+          alt="Menu"
+          class="menu-icon me-2 mr-1"
+        >
+        <span class="d-none d-md-inline">Назад к коллекциям</span>
+      </a>
+    </div>
+
+    <h1 class="collection-title">H E X A</h1>
+
+    <div class="navbar-right">
+      <a href="tel:+380977507277" class="d-none d-md-block">tel: +38 (097) 750 72 77</a>
+      <a href="tel:+380977507277" class="d-md-none"><img src="<%= asset_path('/images/phone.jpg') %>" alt="Call" id="phone-icon"></a>
+    </div>
+  </div>
+</nav>

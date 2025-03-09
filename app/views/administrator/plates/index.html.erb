@@ -1,0 +1,20 @@
+<h1 class="mb-4">Плитки</h1>
+
+<%= link_to "Добавить плитку", new_administrator_plate_path, class: "btn btn-success mb-3" %>
+
+<table class="table table-striped table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>#</th>
+      <th>Название Колекции</th>
+      <th>Название</th>
+      <th>Порядок</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @plates.each_with_index do |plate, index| %>
+      <%= render "administrator/plates/plate", plate: plate, index: index %>
+    <% end %>
+  </tbody>
+</table>

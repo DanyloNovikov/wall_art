@@ -1,0 +1,31 @@
+<div class="container">
+  <h2><%= @collection.title %></h2>
+  <p><%= @collection.description %></p>
+  <p><strong>Опубликовано:</strong> <%= @collection.publish ? "Да" : "Нет" %></p>
+
+  <h3>Плитка в коллекции</h3>
+  <ul>
+    <% @collection.plates.each do |plate| %>
+      <li>
+        <%= link_to plate.title, administrator_plate_path(plate), class: "text-decoration-none" %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h3>Изображения коллекции</h3>
+  <div class="row">
+    <% if @collection.images.attached? %>
+      <% @collection.images.each do |image| %>
+        <div class="col-md-3 mb-3">
+          <%= image_tag image.variant(resize_to_limit: [300, 300]), class: "img-fluid rounded" %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-muted">Изображения не загружены</p>
+    <% end %>
+  </div>
+
+  <%= link_to "Редактировать", edit_administrator_collection_path(@collection), class: "btn btn-warning" %>
+  <%= link_to "Назад", administrator_collections_path, class: "btn btn-secondary" %>
+  <%= link_to "Удалить", administrator_collection_path(@collection), method: :delete, class: "btn btn-danger", data: { confirm: "Удалить плитку?" } %>
+</div>

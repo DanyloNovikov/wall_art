@@ -1,0 +1,51 @@
+<div>
+  <% flash.each do |type, message| %>
+    <% if %w[error success].include?(type) %>
+      <div class="alert alert-<%= type == 'error' ? 'danger' : type %> alert-dismissible fade show">
+        <%= message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= render "shared/carousel", images: @collection.images.map { |img| url_for(img) } %>
+
+  <div class="container mt-3">
+    <div class="row">
+      <!-- Collection Information -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <div class="collection-info">
+          <h2><%= @collection.title %></h2>
+          <p class="collection-description"><%= @collection.description %></p>
+          <%= image_tag url_for('/images/bathroom.png'), class: "d-block img-fluid mt-3" %>
+        </div>
+      </div>
+
+      <!-- Plates Grid -->
+      <div class="col-12 col-md-8">
+        <div class="plates-grid w-100">
+          <div class="row">
+            <%= render partial: "plate_card", collection: @collection.plates.order(:order), as: :plate %>
+          </div>
+
+          <!-- Price Button -->
+          <div class="row mt-4 mb-4">
+            <div class="col-12 text-center">
+              <div class="text-center text-md-end">
+                <button type="button" class="btn border-dark border-2 rounded-0 px-5" data-bs-toggle="modal" data-bs-target="#priceModal">
+                  узнать цену
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price Modal -->
+          <%= render "price_modal", collection: @collection %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Showroom Section -->
+  <%= render "showroom_section" %>
+</div>

@@ -1,0 +1,9 @@
+<tr>
+  <td><%= invoice.name %></td>
+  <td><%= invoice.phone %></td>
+  <td><%= invoice.collection.title %></td>
+  <td><%= invoice.plate.title %></td>
+  <td>
+    <%= link_to "Просмотр", administrator_invoice_path(invoice), class: "btn btn-sm btn-info" %>
+  </td>
+</tr>

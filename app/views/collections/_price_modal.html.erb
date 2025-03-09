@@ -1,0 +1,36 @@
+<div class="modal fade" id="priceModal" tabindex="-1" aria-labelledby="priceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="priceModalLabel">Узнать цену</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <%= form_with(url: invoices_path, local: true, id: "priceForm") do |form| %>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Имя</label>
+                        <%= form.text_field :name, class: "form-control", required: true %>
+                    </div>
+                    <div class="mb-3">
+                        <label for="surname" class="form-label">Фамилия</label>
+                        <%= form.text_field :surname, class: "form-control", required: true %>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Номер телефона</label>
+                        <%= form.telephone_field :phone, class: "form-control", required: true %>
+                    </div>
+                    <div class="mb-3">
+                        <label for="plate_id" class="form-label">Выберите плитку</label>
+                        <%= form.select :plate_id,
+                                                     options_from_collection_for_select(@collection.plates, "id", "title"),
+                                                     { include_blank: "Выберите плитку" },
+                                                     { class: "form-select", required: true } %>
+                    </div>
+                    <%= form.hidden_field :collection_id, value: @collection.id %>
+                    <br>
+                    <%= form.submit "Отправить", class: "btn border-dark border-2 rounded-0 w-100" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

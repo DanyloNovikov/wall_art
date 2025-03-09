@@ -1,0 +1,15 @@
+<div class="text-center mt-5">
+    <h1>Collections</h1>
+
+    <% if @collections.present? %>
+        <ul class="collections-list list-unstyled">
+            <% @collections.each do |collection| %>
+                <li class="collection-item">
+                    <%= link_to collection.title, collection_path(collection) %>
+                </li>
+            <% end %>
+        </ul>
+    <% else %>
+        <p>No collections available.</p>
+    <% end %>
+</div>

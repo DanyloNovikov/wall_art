@@ -1,0 +1,10 @@
+<tr>
+  <td><%= collection.title %></td>
+  <td><%= collection.description.truncate(50) %></td>
+  <td><%= collection.publish ? "Да" : "Нет" %></td>
+  <td>
+    <%= link_to "Просмотр", administrator_collection_path(collection), class: "btn btn-sm btn-info" %>
+    <%= link_to "Редактировать", edit_administrator_collection_path(collection), class: "btn btn-sm btn-warning" %>
+    <%= link_to "Удалить", administrator_collection_path(collection), method: :delete, data: { confirm: "Удалить?" }, class: "btn btn-sm btn-danger" %>
+  </td>
+</tr>

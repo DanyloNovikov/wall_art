@@ -1,0 +1,56 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h1>Invoice #<%= @invoice.id %></h1>
+        </div>
+
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h5>Customer Information</h5>
+                    <p>
+                        <strong>Name:</strong> <%= @invoice.name %> <%= @invoice.surname %><br>
+                        <% if @invoice.phone.present? %>
+                            <strong>Phone:</strong> <%= @invoice.phone %><br>
+                        <% end %>
+                    </p>
+                </div>
+
+                <div class="col-md-6 text-md-end">
+                    <h5>Invoice Details</h5>
+                    <p>
+                        <strong>Invoice Date:</strong> <%= @invoice.created_at.strftime('%B %d, %Y') %><br>
+                        <strong>Collection:</strong> <%= @invoice.collection.title if @invoice.collection %><br>
+                        <strong>Plate:</strong> <%= @invoice.plate.title if @invoice.plate %><br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Collection</th>
+                            <th>Plate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Plate Order</td>
+                            <td><%= @invoice.collection.title if @invoice.collection %></td>
+                            <td><%= @invoice.plate.title if @invoice.plate %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4">
+                <h5>Actions</h5>
+                <div class="btn-group">
+                    <%= link_to 'Назад', administrator_invoices_path, class: 'btn btn-primary' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
