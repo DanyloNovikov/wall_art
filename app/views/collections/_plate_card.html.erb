@@ -1,7 +1,7 @@
 <div class="col-6 col-sm-4 col-md-3 mb-3">
     <div class="plate-card">
         <% if plate.image.attached? %>
-            <%= image_tag plate.image.variant(resize_to_limit: [120, 120]), class: "plate-image img-fluid" %>
+            <%= image_tag url_for(plate.image.variant(resize_to_limit: [120, 120])), class: "plate-image img-fluid" %>
         <% end %>
         <p class="plate-title"><%= plate.title.upcase %></p>
     </div>
