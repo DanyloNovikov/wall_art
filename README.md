@@ -1,24 +1,54 @@
 # README
+## How to Run the Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Follow these steps to start the application:
 
-Things you may want to cover:
+1. **Install Ruby and Dependencies**
+    ```
+    ruby -v   # Check installed Ruby version
+    bundle install   # Install dependencies from Gemfile
+    ```
 
-* Ruby version
+2. **Image Processing Dependencies**
+    ```
+    # For Ubuntu/Debian
+    sudo apt-get install libvips-dev
 
-* System dependencies
+    # For macOS
+    brew install vips
 
-* Configuration
+    # For Windows
+    # See https://libvips.github.io/libvips/install.html for instructions
+    ```
 
-* Database creation
+3. **Set Up the Database**
+    ```
+    rails db:create   # Create the database
+    rails db:migrate  # Run migrations
+    rails db:seed     # Populate with initial data (if required)
+    ```
 
-* Database initialization
+4. **Start the Server**
+    ```
+    rails server   # Or shorthand: rails s
+    ```
 
-* How to run the test suite
+5. **Start Sidekiq**
+    ```
+    bundle exec sidekiq   # Start background job processing
+    ```
 
-* Services (job queues, cache servers, search engines, etc.)
+6. **Open the Application in Browser**
+    - Navigate to http://localhost:3000
 
-* Deployment instructions
+## Additional Information
 
-* ...
+* Ruby version: 3.2.1
+
+* System dependencies:
+  - libvips (for image_processing gem)
+  - ImageMagick (alternative backend)
+
+* How to run the test suite: `rspec`
+
+* API documentation: Available at `/administrator/api-docs`
