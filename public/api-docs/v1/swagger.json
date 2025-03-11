@@ -20,6 +20,52 @@
     }
   ],
   "paths": {
+    "/api/v1/auth": {
+      "post": {
+        "summary": "Authenticate admin user",
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful authentication"
+          },
+          "401": {
+            "description": "invalid password"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "admin": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      },
+                      "password": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "email",
+                      "password"
+                    ]
+                  }
+                },
+                "required": [
+                  "admin"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/collections": {
       "get": {
         "summary": "Retrieve all collections",
