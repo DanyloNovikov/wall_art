@@ -36,7 +36,7 @@ gem 'devise-jwt'
 # gem "bcrypt", "~> 3.1.7"
 
 # digitalocean
-gem 'aws-sdk-s3', '~> 1.48', require: false
+gem 'aws-sdk-s3', '~> 1.186', require: false
 
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
